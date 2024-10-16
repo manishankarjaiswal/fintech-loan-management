@@ -47,7 +47,7 @@ This project is a simple FinTech loan management system where users can:
 ### Steps to Run Locally
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/loan-management-system.git
+   git clone git@github.com:manishankarjaiswal/fintech-loan-management.git
    cd loan-management-system
    ```
 
