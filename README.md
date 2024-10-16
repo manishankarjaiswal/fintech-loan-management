@@ -66,8 +66,13 @@ This project is a simple FinTech loan management system where users can:
    ```
 
 5. **Access the Application**:
-   - Open your browser and navigate to `http://127.0.0.1:5000`.
+   - Open your browser and navigate to `http://127.0.0.1:5000/login` for login.
    - Use the provided registration and login pages to create users and test loan functionalities.
+   - `http://127.0.0.1:5000/register` For Registration
+   - `http://127.0.0.1:5000/apply-loan` For Apply Loan
+   - `http://127.0.0.1:5000/loan-status` For Loan details
+   - `http://127.0.0.1:5000/loan-emi` For Emi payments
+   - `http://127.0.0.1:5000/dashboard` For Dashboard
 
 ### MongoDB Schema
 - **Users Collection**: Stores user details (name, email, password (hashed), phone).
