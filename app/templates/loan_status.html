@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Status</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Loan Status</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Loan ID</th>
+                        <th scope="col">Loan Amount</th>
+                        <th scope="col">Outstanding Amount</th>
+                        <th scope="col">Loan Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+        </div>
+        <p class="text-center mt-3">Go to Dashboard <a href="/dashboard">Click Here</a></p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (Popper.js and jQuery) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var token = localStorage.getItem("token");
+            $.ajax({
+                url: '/status',
+                type: 'GET',
+                contentType: 'application/json',
+                headers: { Authorization: 'Bearer '+token },
+                success: function(response) {
+                    for(var i=0;i<response.length;i++)
+                    {
+                        content = "<tr><td>"+response[i]["_id"]+"</td><td>"+response[i]["amount"]+"</td><td>"+response[i]["outstanding_balance"]+"</td><td>"+response[i]["status"]+"</td></tr>"
+                        $("#tbody").append(content);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'An error occurred during registration.';
+                    alert(errorMessage);
+                    window.location.href = 'login';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
