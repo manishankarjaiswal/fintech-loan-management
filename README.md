@@ -62,7 +62,7 @@ This project is a simple FinTech loan management system where users can:
 
 4. **Run the Flask App**:
    ```bash
-   flask run
+   python run.py
    ```
 
 5. **Access the Application**:
