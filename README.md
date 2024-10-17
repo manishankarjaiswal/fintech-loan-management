@@ -28,6 +28,10 @@ This project is a simple FinTech loan management system where users can:
    - Admin users can approve/reject loan applications.
    - Admin can view all loan applications and repayment statuses.
 
+6. **Additional Features**:
+   - Email Notification: Send an email to the user when their loan is approved, rejected, or when a repayment is made.
+   - Interest Calculation: Automatically calculate the interest on the loan based on the tenure and interest rate provided.
+
 ## Tools & Technologies
 - **Backend**: Python Flask
 - **Frontend**: HTML, CSS, JavaScript
@@ -43,6 +47,7 @@ This project is a simple FinTech loan management system where users can:
 - Git
 - Flask-JWT-Extended
 - bcrypt
+- Flask-Mail
 
 ### Steps to Run Locally
 1. **Clone the Repository**:
@@ -73,6 +78,7 @@ This project is a simple FinTech loan management system where users can:
    - `http://127.0.0.1:5000/loan-status` For Loan details
    - `http://127.0.0.1:5000/loan-emi` For Emi payments
    - `http://127.0.0.1:5000/dashboard` For Dashboard
+   - `http://127.0.0.1:5000/admin-dashboard` For Admin Dashboard
 
 ### MongoDB Schema
 - **Users Collection**: Stores user details (name, email, password (hashed), phone).
@@ -92,3 +98,6 @@ This project is a simple FinTech loan management system where users can:
 - **GET Loan Repayments**: `GET /repayments/<loan_id>`
 - **Admin Approve/Reject**: `POST /loan/<loan_id>/approve(reject)`
 - **Admin Get All loans**: `GET /loans`
+
+## Note
+- Make sure mongodb is running in the local
