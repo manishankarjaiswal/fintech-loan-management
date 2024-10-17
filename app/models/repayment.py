@@ -15,3 +15,7 @@ class Repayment:
     @staticmethod
     def get_repayments_by_loan(loan_id):
         return list(mongo.db.repayments.find({"loan_id": loan_id}).sort({"payment_date":-1}))
+    
+    @staticmethod
+    def get_all_repayments():
+        return list(mongo.db.repayments.find({}).sort({"payment_date":-1}))

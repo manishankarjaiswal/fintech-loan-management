@@ -26,12 +26,16 @@
                         <input type="number" class="form-control" id="amount" name="amount" required>
                     </div>
                     <div class="mb-3">
-                        <label for="tenure" class="form-label">Tenure</label>
+                        <label for="tenure" class="form-label">Tenure(Years)</label>
                         <input type="text" class="form-control" id="tenure" name="tenure" required>
                     </div>
                     <div class="mb-3">
-                        <label for="interest_rate" class="form-label">Interest Rate</label>
+                        <label for="interest_rate" class="form-label">Interest Rate (%)</label>
                         <input type="tel" class="form-control" id="interest_rate" name="interest_rate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="interest_amount" class="form-label">Interest Amount</label>
+                        <input type="number" class="form-control" id="interest_amount" name="interest_amount" required>
                     </div>
                     <div class="mb-3">
                         <label for="reason" class="form-label">Reason</label>
@@ -78,6 +82,22 @@
                 });
             });
         });
+        function calculateInterestAmount() {
+            // Get the input values
+            let amount = parseFloat($('#amount').val()) || 0;
+            let tenure = parseInt($('#tenure').val()) || 0;
+            let interest_rate = parseFloat($('#interest_rate').val()) || 0;
+
+
+            // Calculate the interest
+            let interest_amount = (amount * interest_rate * tenure) / 100;
+
+            // Update the interest amount field
+            $('#interest_amount').val(interest_amount.toFixed(2));
+        }
+
+        // Attach change event handlers to the inputs
+        $('#amount, #tenure, #interest_rate').on('input', calculateInterestAmount);
     </script>
 </body>
 </html>

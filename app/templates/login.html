@@ -58,7 +58,11 @@
                         localStorage.setItem('token', response.access_token);
                         alert('Login successful!');
                         // Redirect to dashboard or home page
-                        window.location.href = 'dashboard';
+                        if(response.is_admin){
+                            window.location.href = 'admin-dashboard';
+                        }else{
+                            window.location.href = 'dashboard';
+                        }                        
                     },
                     error: function(xhr, status, error) {
                         var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'An error occurred during login.';

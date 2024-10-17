@@ -37,7 +37,7 @@ def login():
 
     access_token = create_access_token(identity=str(user['_id']))
     refresh_token = create_refresh_token(identity=str(user['_id']))
-    return jsonify(access_token=access_token, refresh_token=refresh_token), 200
+    return jsonify(access_token=access_token, refresh_token=refresh_token, is_admin=user['is_admin']), 200
 
 @bp.route('/protected', methods=['GET'])
 @jwt_required()

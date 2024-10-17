@@ -2,10 +2,9 @@ from flask import Blueprint, request, jsonify, render_template
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.models.loan import Loan
 from app.models.repayment import Repayment
+from app.routes.utils import send_email
 
 bp = Blueprint('loan', __name__)
-
-
 
 @bp.route('/dashboard', methods=['GET'])
 def apply_dashboard():
@@ -67,6 +66,9 @@ def repay_loan(loan_id):
 
     Repayment.create_repayment(loan_id, amount)
     Loan.update_outstanding_balance(loan_id, amount)
+    subject = "Your EMI payment is Successfull"
+    body = f"Dear user,\n\nYour loan EMI payment is Successfull. Congratulations!"
+    send_email(subject, body)
 
     return jsonify({"message": "Repayment successful"}), 200
 

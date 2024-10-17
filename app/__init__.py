@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask_jwt_extended import JWTManager
+from flask_mail import Mail
 from config import Config
 
 mongo = PyMongo()
 jwt = JWTManager()
+mail = Mail()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -12,6 +14,7 @@ def create_app(config_class=Config):
 
     mongo.init_app(app)
     jwt.init_app(app)
+    mail.init_app(app)
 
     from app.routes import auth, loan, admin
     app.register_blueprint(auth.bp)
